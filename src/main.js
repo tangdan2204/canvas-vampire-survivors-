@@ -1718,7 +1718,7 @@ export class Game {
         for (const e of this.enemies) {
             const sprite = getEnemySprite(e.type, e.size);
             if (sprite && !e.boss) {
-                const ds = sprite._displaySize || sprite.width;
+                const ds = e.size * 2;
                 ctx.save();
                 if (e.flashTimer > 0) ctx.filter = 'brightness(3)';
                 else if (e.shielded) ctx.filter = 'saturate(2) brightness(1.3)';
