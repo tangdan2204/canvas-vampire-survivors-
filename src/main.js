@@ -81,8 +81,8 @@ function getEnemySprite(def, size, frameIndex) {
     if (spritesReady && hasSprite(def.id)) {
         const img = getSprite(def.id, frameIndex || 0);
         if (img) {
-            // Tag display size so renderer can scale correctly
-            img._displaySize = size * 2;
+            // Display at size*4 for good visibility (original was size*2 circle diameter)
+            img._displaySize = size * 4;
             return img;
         }
     }

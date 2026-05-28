@@ -231,7 +231,7 @@ export class Player {
                 : 2 + Math.floor(performance.now() / 150) % 4;
             const img = getSprite('player', frameIdx);
             if (img) {
-                const ds = this.size * 3;
+                const ds = this.size * 5;
                 // Circular clip to hide square background
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, ds / 2, 0, Math.PI * 2);
@@ -494,7 +494,7 @@ export class Enemy {
             const img = getSprite(this.id, frameIdx);
             if (img) {
                 ctx.save();
-                const ds = this.size * 2;
+                const ds = this.size * 3;
                 // Circular clip to hide square background
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, ds / 2, 0, Math.PI * 2);
