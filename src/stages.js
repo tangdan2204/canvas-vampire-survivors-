@@ -113,6 +113,17 @@ export const STAGES = Object.freeze({
     // so the snow lines read on the canvas. The 10-minute boss is replaced
     // with IceQueen (see data.js BOSSES.ICE_QUEEN) via `bossOverrides`.
     // ----------------------------------------------------------------------
+    GRASSLAND: Object.freeze({
+        id: 'grassland',
+        name: 'Sunny Meadow',
+        icon: '🌻',
+        description: 'A cheerful grassland. Standard difficulty with warm vibes.',
+        background: { fill: '#4a8c3f', gridAlpha: 0.03 },
+        musicStyle: 'forest',
+        poolOverrides: {},
+        extraEnemies: [],
+        bossOffsets: {}
+    }),
     TUNDRA: Object.freeze({
         id: 'tundra',
         name: 'Frozen Tundra',
@@ -148,20 +159,20 @@ export const STAGES = Object.freeze({
     })
 });
 
-const DEFAULT_STAGE_ID = 'forest';
+const DEFAULT_STAGE_ID = 'grassland';
 
 /** @returns {StageDef} */
 export function getStage(id) {
-    if (!id) return STAGES.FOREST;
+    if (!id) return STAGES.GRASSLAND;
     for (const s of Object.values(STAGES)) {
         if (s.id === id) return s;
     }
-    return STAGES.FOREST;
+    return STAGES.GRASSLAND;
 }
 
 /** Stable ordering for the stage picker UI. */
 export function listStages() {
-    return [STAGES.FOREST, STAGES.CRYPT, STAGES.TUNDRA];
+    return [STAGES.GRASSLAND, STAGES.FOREST, STAGES.CRYPT, STAGES.TUNDRA];
 }
 
 /**

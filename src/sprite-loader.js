@@ -66,6 +66,7 @@ const ICON_MANIFEST = {
 };
 
 const TILE_MANIFEST = {
+    grassland: ['ground_0', 'ground_1', 'ground_2'],
     forest: ['ground_0', 'ground_1', 'ground_2', 'tree_0', 'tree_1', 'rock_0'],
     crypt: ['ground_0', 'ground_1', 'ground_2', 'pillar_0', 'skull_pile_0', 'brazier_0'],
     tundra: ['ground_0', 'ground_1', 'ground_2', 'ice_spire_0', 'frozen_tree_0', 'frozen_corpse_0']

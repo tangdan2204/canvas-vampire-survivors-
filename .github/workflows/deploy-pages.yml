@@ -42,6 +42,7 @@ jobs:
           [ -f service-worker.js ] && cp service-worker.js _site/ || true
           [ -f manifest.json ] && cp manifest.json _site/ || true
           cp -r src _site/src
+          if [ -d assets ]; then cp -r assets _site/assets; fi
           if [ -d docs ]; then cp -r docs _site/docs; fi
           # Simple 404 fallback so deep-links to hash routes still load the game.
           cp index.html _site/404.html
