@@ -80,7 +80,11 @@ function getEnemySprite(def, size, frameIndex) {
     // Try generated sprite first
     if (spritesReady && hasSprite(def.id)) {
         const img = getSprite(def.id, frameIndex || 0);
-        if (img) return img;
+        if (img) {
+            // Tag display size so renderer can scale correctly
+            img._displaySize = size * 2;
+            return img;
+        }
     }
 
     // Fallback: procedural circle sprite
@@ -1718,7 +1722,8 @@ export class Game {
             }
             const sprite = getEnemySprite(e.type, e.size);
             if (sprite) {
-                ctx.drawImage(sprite, e.x - sprite.width / 2, e.y - sprite.height / 2);
+                const ds = sprite._displaySize || sprite.width;
+                ctx.drawImage(sprite, e.x - ds / 2, e.y - ds / 2, ds, ds);
                 // Cheap HP bar (cached sprite can't reflect current HP).
                 const pct = Math.max(0, e.hp / e.maxHp);
                 if (pct < 1) {

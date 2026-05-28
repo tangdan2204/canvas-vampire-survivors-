@@ -17,6 +17,7 @@
 
 import { CONFIG } from './config.js';
 import { ENEMIES } from './data.js';
+import { getSprite, hasSprite, spritesReady } from './sprite-loader.js';
 
 export class Player {
     constructor(x, y) {
@@ -222,6 +223,31 @@ export class Player {
             : 1;
         ctx.save();
         ctx.globalAlpha = strobe;
+
+        // Try generated sprite
+        if (spritesReady && hasSprite('player')) {
+            const frameIdx = this.vx === 0 && this.vy === 0
+                ? Math.floor(performance.now() / 500) % 2
+                : 2 + Math.floor(performance.now() / 150) % 4;
+            const img = getSprite('player', frameIdx);
+            if (img) {
+                const ds = this.size * 3;
+                ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
+                // Garlic aura ring
+                const garlic = this.weapons.find((w) => w.id === 'garlic');
+                if (garlic) {
+                    const range = garlic.getRange(this);
+                    const t = performance.now() / 400;
+                    ctx.strokeStyle = `rgba(160,255,160,${0.25 + Math.sin(t) * 0.08})`;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, range, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+                ctx.restore();
+                return;
+            }
+        }
 
         const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2.2);
         grad.addColorStop(0, 'rgba(100,200,255,0.35)');
@@ -456,6 +482,37 @@ export class Enemy {
     }
 
     render(ctx) {
+        // Use generated sprite if available (for boss/flash path)
+        if (spritesReady && hasSprite(this.id) && this.flashTimer <= 0) {
+            const frameIdx = Math.floor(performance.now() / 300) % 2;
+            const img = getSprite(this.id, frameIdx);
+            if (img) {
+                ctx.save();
+                if (this.slowTimer > 0) {
+                    ctx.filter = 'hue-rotate(180deg)';
+                }
+                const ds = this.size * 2;
+                ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
+                // HP bar
+                const pct = Math.max(0, this.hp / this.maxHp);
+                const w = this.boss ? 80 : 30;
+                ctx.filter = 'none';
+                ctx.fillStyle = '#222';
+                ctx.fillRect(this.x - w / 2, this.y - this.size - 10, w, 4);
+                ctx.fillStyle = pct > 0.5 ? '#44ff44' : pct > 0.25 ? '#ffaa33' : '#ff4444';
+                ctx.fillRect(this.x - w / 2, this.y - this.size - 10, w * pct, 4);
+                if (this.boss) {
+                    ctx.strokeStyle = this.type?.iceQueen ? 'rgba(170,220,255,0.85)' : '#ff33aa';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size + 4, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+                ctx.restore();
+                return;
+            }
+        }
+
         ctx.save();
         // Slowed foes get a cold cast.
         if (this.flashTimer > 0) {
