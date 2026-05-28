@@ -229,7 +229,7 @@ export class Player {
             const frameIdx = (this.vx === 0 && this.vy === 0) ? 0 : 1;
             const img = getSprite('player', frameIdx);
             if (img) {
-                const ds = this.size * 3;
+                const ds = this.size * 2;
                 ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
                 // Garlic aura ring
                 const garlic = this.weapons.find((w) => w.id === 'garlic');
@@ -487,7 +487,7 @@ export class Enemy {
                 ctx.save();
                 if (this.flashTimer > 0) ctx.filter = 'brightness(3)';
                 else if (this.slowTimer > 0) ctx.filter = 'hue-rotate(180deg)';
-                const ds = Math.max(this.size * 2.5, 24);
+                const ds = this.size * 2;
                 ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
                 ctx.restore();
                 // HP bar

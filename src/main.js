@@ -82,7 +82,7 @@ function getEnemySprite(def, size, frameIndex) {
         const img = getSprite(def.id, frameIndex || 0);
         if (img) {
             // Display large: size * 5 for clear visibility
-            img._displaySize = Math.max(size * 2.5, 24);
+            img._displaySize = Math.max(size * 2, 20);
             return img;
         }
     }
