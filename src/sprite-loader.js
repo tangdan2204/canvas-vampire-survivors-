@@ -18,6 +18,8 @@
 
 // Asset base path (relative to index.html)
 const ASSET_BASE = './assets';
+// Cache bust version — increment after regenerating assets
+const CACHE_V = '2';
 
 // Sprite registry: category → id → frame → Image
 const sprites = new Map();
@@ -78,7 +80,7 @@ function loadImage(src) {
         const img = new Image();
         img.onload = () => resolve(img);
         img.onerror = () => resolve(null); // Graceful fallback
-        img.src = src;
+        img.src = src + '?v=' + CACHE_V;
     });
 }
 
