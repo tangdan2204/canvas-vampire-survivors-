@@ -229,7 +229,7 @@ export class Player {
             const frameIdx = (this.vx === 0 && this.vy === 0) ? 0 : 1;
             const img = getSprite('player', frameIdx);
             if (img) {
-                const ds = this.size * 6;
+                const ds = this.size * 3;
                 ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
                 // Garlic aura ring
                 const garlic = this.weapons.find((w) => w.id === 'garlic');
