@@ -1,14 +1,27 @@
 # 球形脸谱角色美术设计文档
 
-> 版本: 1.0 | 创建: 2026-05-29 | 模型: gemini-3-pro-image (AIGW)
+> 版本: 2.0 | 更新: 2026-05-29 | 模型: gemini-3-pro-image (AIGW)
 
 ## 设计目标
 
-将游戏中所有角色替换为**可爱圆形立体球形 + 中国戏曲脸谱化表情**风格，统一视觉语言：
-- 每个角色是一个 3D 光泽球体
-- 球面上绘制该角色特征的脸谱（类似中国京剧脸谱 face paint）
+将游戏中所有角色替换为**国潮萌球 (Guochao Sphere)** 风格，统一视觉语言：
+- 每个角色是一个 3D 光泽球体（"舞台"）
+- 球面上绘制**京剧脸谱式色块彩绘**（"角色身份"）
+- 所有面部特征是**平面彩绘**（不是3D建模五官）
+- 颜色分区清晰、线条粗犷（2-3色块对比）
+- 眼睛统一为**脸谱式眼形 + 发光瞳孔**
 - 背景统一改为草原主题（温暖、明亮、治愈）
-- 保持可爱 kawaii 风格，适合休闲游戏
+
+## 四维角色 DNA
+
+每个角色由四个维度定义，注入统一公式即可生成：
+
+| 维度 | 说明 | 示例 |
+|------|------|------|
+| **球色(Sphere)** | 主体颜色+材质 | 天蓝高光泽 |
+| **脸谱(Paint)** | 面部彩绘设计（色块+线条+眼形+嘴形） | 蓝白双色丹凤眼 |
+| **配饰(Accent)** | 小型凸起装饰（≤球径15%） | 无 / 小角 / 冰冠 |
+| **气场(Aura)** | 光效/粒子/拖尾 | 淡蓝魔力光晕 |
 
 ## 技术参数
 
@@ -26,22 +39,39 @@
 
 ## 风格 Prompt
 
-### 全局前缀 (STYLE_PREFIX)
+### 全局前缀 (STYLE_PREFIX) — V2
 
 ```
-3D rendered cute spherical ball character, perfectly round glossy sphere shape, 
-character face painted directly on sphere surface like Chinese opera face paint 
-(脸谱 style mask), big cute expressive eyes on sphere surface, smooth cel-shading, 
-soft studio lighting, kawaii adorable style, game asset on PURE WHITE background 
-(#FFFFFF), centered composition, single sphere character, professional quality 3D render
+3D cute chibi sphere character, perfectly round glossy ball shape, 
+Chinese opera face-paint style (京剧脸谱) painted in bold flat color 
+blocks on sphere surface, dramatic thick painted eye outlines, 
+stylized opera-mask eyes with glowing pupils, all facial features 
+are SURFACE PAINT (not 3D modeled geometry), sharp clean color 
+boundaries between paint regions, rich vibrant saturated colors, 
+smooth cel-shading with soft rim lighting from above-left, 
+game asset on PURE WHITE background (#FFFFFF), centered composition, 
+single sphere character, professional quality 3D render, 
+highly detailed, colorful
 ```
 
-### 全局后缀 (STYLE_SUFFIX)
+### 全局后缀 (STYLE_SUFFIX) — V2
 
 ```
-pure solid white background, no shadows on ground, no gradient background, 
-clean studio lighting, game-ready sphere asset, perfectly round sphere shape 
-maintained, no text, no watermark
+pure solid white background, no ground plane, no shadows on ground, 
+no gradient background, perfectly spherical silhouette maintained, 
+face-paint consistent with Chinese opera mask tradition (脸谱), 
+bold graphic color blocking, vibrant rich colors, no text, no watermark, 
+game-ready sprite asset
+```
+
+### 角色注入模板
+
+```
+A {sphereColor} {material} sphere. 
+Face paint design: {faceDescription}. 
+{accentDescription}. 
+{auraDescription}. 
+Character: {characterName}.
 ```
 
 ---

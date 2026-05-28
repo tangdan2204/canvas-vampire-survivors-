@@ -1,0 +1,28 @@
+{
+  "completed": [
+    "player_idle",
+    "player_walk",
+    "enemy_bat",
+    "enemy_zombie",
+    "enemy_skeleton",
+    "enemy_wolf",
+    "enemy_golem",
+    "enemy_ghost",
+    "enemy_mage",
+    "enemy_slime",
+    "enemy_slimeling",
+    "enemy_bomber",
+    "enemy_illusionist",
+    "boss_reaper",
+    "boss_void_lord",
+    "boss_necromancer",
+    "boss_chrono_lich",
+    "boss_ice_queen",
+    "bg_grassland_0",
+    "bg_grassland_1",
+    "bg_grassland_2"
+  ],
+  "failed": [],
+  "lastIndex": -1,
+  "startedAt": "2026-05-28T17:06:11.591Z"
+}

@@ -19,7 +19,7 @@
 // Asset base path (relative to index.html)
 const ASSET_BASE = './assets';
 // Cache bust version — increment after regenerating assets
-const CACHE_V = '7';
+const CACHE_V = '8';
 
 // Sprite registry: category → id → frame → Image
 const sprites = new Map();
