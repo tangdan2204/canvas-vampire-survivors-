@@ -1,0 +1,418 @@
+{
+  "version": "1.0.0",
+  "generationConfig": {
+    "model": "gemini-3.1-flash-image",
+    "endpoint": "https://aigw.netease.com/v1/chat/completions",
+    "auth": "p4x4nxxigw2ccja7.7vfnst67x7dcmghii83cw47uovjqpmrx",
+    "cooldownMs": 20000,
+    "maxRetries": 3,
+    "retryBackoff": [30000, 60000, 90000],
+    "timeoutMs": 180000,
+    "temperature": 0.7,
+    "maxTokens": 4096,
+    "vertexai": { "response_modalities": ["IMAGE", "TEXT"] }
+  },
+  "globalStyle": {
+    "prefix": "pixel art game sprite, 16-bit retro style, limited color palette, clean pixel edges, no anti-aliasing, dark fantasy theme, top-down RPG perspective",
+    "suffix": "single asset centered on canvas, no text, no watermark, no signature, consistent retro game aesthetic, sharp pixels"
+  },
+  "sprites": {
+    "player": {
+      "id": "player",
+      "category": "sprites",
+      "subcategory": "player",
+      "size": [32, 32],
+      "frames": [
+        { "name": "idle_0", "poseHint": "standing still, facing down, relaxed stance" },
+        { "name": "idle_1", "poseHint": "standing still, slight breathing animation, cloak sway" },
+        { "name": "walk_0", "poseHint": "walking, left foot forward, arms at sides" },
+        { "name": "walk_1", "poseHint": "walking, mid-stride, both feet close" },
+        { "name": "walk_2", "poseHint": "walking, right foot forward, arms at sides" },
+        { "name": "walk_3", "poseHint": "walking, mid-stride returning, cloak flowing" }
+      ],
+      "codeRef": {
+        "file": "src/main.js",
+        "function": "drawPlayer",
+        "currentImpl": "ctx.fillStyle '#44aaff' circle + '#cfeaff' inner highlight"
+      },
+      "outputDir": "assets/sprites/player"
+    },
+    "enemies": {
+      "bat": {
+        "id": "bat",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [16, 16],
+        "frames": [
+          { "name": "fly_0", "poseHint": "wings up, body compact" },
+          { "name": "fly_1", "poseHint": "wings down, body stretched" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#8844ff' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/bat"
+      },
+      "zombie": {
+        "id": "zombie",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [24, 24],
+        "frames": [
+          { "name": "walk_0", "poseHint": "arms outstretched, lurching left" },
+          { "name": "walk_1", "poseHint": "arms outstretched, lurching right" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#44aa44' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/zombie"
+      },
+      "skeleton": {
+        "id": "skeleton",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [20, 20],
+        "frames": [
+          { "name": "walk_0", "poseHint": "walking, sword raised" },
+          { "name": "walk_1", "poseHint": "walking, sword lowered" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#dddddd' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/skeleton"
+      },
+      "wolf": {
+        "id": "wolf",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [24, 24],
+        "frames": [
+          { "name": "run_0", "poseHint": "running, front legs extended" },
+          { "name": "run_1", "poseHint": "running, legs tucked under body" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#aa6644' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/wolf"
+      },
+      "golem": {
+        "id": "golem",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [40, 40],
+        "frames": [
+          { "name": "idle_0", "poseHint": "standing heavy, fists at sides, shield rune glowing" },
+          { "name": "walk_0", "poseHint": "lumbering step, one fist raised" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#888888' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/golem"
+      },
+      "ghost": {
+        "id": "ghost",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [20, 20],
+        "frames": [
+          { "name": "float_0", "poseHint": "hovering, wispy tail trailing down" },
+          { "name": "float_1", "poseHint": "hovering, wispy tail trailing to side" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#88ccff' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/ghost"
+      },
+      "mage": {
+        "id": "mage",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [20, 20],
+        "frames": [
+          { "name": "idle_0", "poseHint": "standing with hands glowing, ready to cast" },
+          { "name": "cast_0", "poseHint": "arms raised, energy ball forming above" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#cc44cc' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/mage"
+      },
+      "slime": {
+        "id": "slime",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [28, 28],
+        "frames": [
+          { "name": "idle_0", "poseHint": "blob shape resting, core visible" },
+          { "name": "bounce_0", "poseHint": "compressed preparing to jump, squished" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#33cc88' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/slime"
+      },
+      "slimeling": {
+        "id": "slimeling",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [12, 12],
+        "frames": [
+          { "name": "hop_0", "poseHint": "tiny blob mid-air" },
+          { "name": "hop_1", "poseHint": "tiny blob landing, flat" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#66ddaa' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/slimeling"
+      },
+      "bomber": {
+        "id": "bomber",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [20, 20],
+        "frames": [
+          { "name": "roll_0", "poseHint": "round body rolling forward, fuse lit" },
+          { "name": "flash_0", "poseHint": "body flashing red, about to detonate" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#ff6644' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/bomber"
+      },
+      "illusionist": {
+        "id": "illusionist",
+        "category": "sprites",
+        "subcategory": "enemies",
+        "size": [20, 20],
+        "frames": [
+          { "name": "idle_0", "poseHint": "elegant pose, afterimages trailing" },
+          { "name": "cast_0", "poseHint": "gesture summoning clones, arms spread" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#cc88ff' with white highlight"
+        },
+        "outputDir": "assets/sprites/enemies/illusionist"
+      }
+    },
+    "bosses": {
+      "reaper": {
+        "id": "reaper",
+        "category": "sprites",
+        "subcategory": "bosses",
+        "size": [64, 64],
+        "frames": [
+          { "name": "idle_0", "poseHint": "floating, scythe held to side, robes billowing" },
+          { "name": "idle_1", "poseHint": "floating, slight rotation, energy pulse" },
+          { "name": "attack_0", "poseHint": "scythe raised high, about to swing down" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#220033' with white highlight, boss=true"
+        },
+        "outputDir": "assets/sprites/bosses/reaper"
+      },
+      "void_lord": {
+        "id": "void_lord",
+        "category": "sprites",
+        "subcategory": "bosses",
+        "size": [80, 80],
+        "frames": [
+          { "name": "idle_0", "poseHint": "roiling mass of void energy, eyes scattered" },
+          { "name": "idle_1", "poseHint": "tendrils reaching outward, central eye pulsing" },
+          { "name": "charge_0", "poseHint": "elongated form rushing forward, trail of corruption" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#550077' with white highlight, boss=true"
+        },
+        "outputDir": "assets/sprites/bosses/void_lord"
+      },
+      "necromancer": {
+        "id": "necromancer",
+        "category": "sprites",
+        "subcategory": "bosses",
+        "size": [72, 72],
+        "frames": [
+          { "name": "idle_0", "poseHint": "floating, staff raised, skull glowing green" },
+          { "name": "idle_1", "poseHint": "arms spread, summoning circles below" },
+          { "name": "summon_0", "poseHint": "staff pointed down, undead hands emerging from ground" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#3a1a4a' with white highlight, boss=true"
+        },
+        "outputDir": "assets/sprites/bosses/necromancer"
+      },
+      "chrono_lich": {
+        "id": "chrono_lich",
+        "category": "sprites",
+        "subcategory": "bosses",
+        "size": [96, 96],
+        "frames": [
+          { "name": "idle_0", "poseHint": "towering skeleton, clockwork gears visible, hourglass staff" },
+          { "name": "idle_1", "poseHint": "time distortion ripples, ghostly arms extended" },
+          { "name": "charge_0", "poseHint": "rushing forward, time trail warping behind" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#0b2a4a' with white highlight, boss=true"
+        },
+        "outputDir": "assets/sprites/bosses/chrono_lich"
+      },
+      "ice_queen": {
+        "id": "ice_queen",
+        "category": "sprites",
+        "subcategory": "bosses",
+        "size": [80, 80],
+        "frames": [
+          { "name": "idle_0", "poseHint": "regal stance, ice armor shimmering, cape flowing" },
+          { "name": "idle_1", "poseHint": "raising hand, frost crystals forming" },
+          { "name": "charge_0", "poseHint": "lunging with frost lance, blizzard trail" }
+        ],
+        "codeRef": {
+          "file": "src/main.js",
+          "function": "getEnemySprite",
+          "currentImpl": "circle fill '#88ccff' with white highlight, boss=true, iceQueen flag"
+        },
+        "outputDir": "assets/sprites/bosses/ice_queen"
+      }
+    }
+  },
+  "backgrounds": {
+    "forest": {
+      "id": "forest",
+      "category": "backgrounds",
+      "tiles": [
+        { "name": "ground_0", "hint": "dark soil with scattered dead leaves and tiny bone fragments" },
+        { "name": "ground_1", "hint": "dark soil with twisted root crossing" },
+        { "name": "ground_2", "hint": "dark soil with patches of sickly moss" }
+      ],
+      "decorations": [
+        { "name": "tree_0", "hint": "gnarled dead tree, bare twisted branches" },
+        { "name": "tree_1", "hint": "mushroom cluster, faintly glowing purple caps" },
+        { "name": "rock_0", "hint": "moss-covered gravestone, cracked" }
+      ],
+      "tileSize": [64, 64],
+      "decoSize": [32, 32],
+      "codeRef": {
+        "file": "src/main.js",
+        "function": "drawBackground (fill '#1a1a2e' + grid)",
+        "currentImpl": "solid color fill + faint grid lines"
+      },
+      "outputDir": "assets/backgrounds/forest"
+    },
+    "crypt": {
+      "id": "crypt",
+      "category": "backgrounds",
+      "tiles": [
+        { "name": "ground_0", "hint": "cracked stone floor tile with ancient rune fragments" },
+        { "name": "ground_1", "hint": "stone tile with dark water pooling in cracks" },
+        { "name": "ground_2", "hint": "stone tile with scattered ritual candle wax" }
+      ],
+      "decorations": [
+        { "name": "pillar_0", "hint": "broken stone pillar, half-collapsed" },
+        { "name": "skull_pile_0", "hint": "pile of skulls and bones against wall" },
+        { "name": "brazier_0", "hint": "iron brazier with green magical flame" }
+      ],
+      "tileSize": [64, 64],
+      "decoSize": [32, 32],
+      "codeRef": {
+        "file": "src/main.js",
+        "function": "drawBackground (fill '#0c0816' + grid)",
+        "currentImpl": "solid color fill + faint grid lines"
+      },
+      "outputDir": "assets/backgrounds/crypt"
+    },
+    "tundra": {
+      "id": "tundra",
+      "category": "backgrounds",
+      "tiles": [
+        { "name": "ground_0", "hint": "cracked ice over dark water, snow accumulation at edges" },
+        { "name": "ground_1", "hint": "snow-covered flagstone with frost crystal patterns" },
+        { "name": "ground_2", "hint": "packed snow with frozen footprints and ice shards" }
+      ],
+      "decorations": [
+        { "name": "ice_spire_0", "hint": "tall jagged ice crystal formation" },
+        { "name": "frozen_tree_0", "hint": "dead tree completely encased in ice" },
+        { "name": "frozen_corpse_0", "hint": "armored warrior frozen mid-stride, covered in frost" }
+      ],
+      "tileSize": [64, 64],
+      "decoSize": [32, 32],
+      "codeRef": {
+        "file": "src/main.js",
+        "function": "drawBackground (fill '#2a3a4f' + grid)",
+        "currentImpl": "solid color fill + faint grid lines"
+      },
+      "outputDir": "assets/backgrounds/tundra"
+    }
+  },
+  "ui": {
+    "weaponIcons": {
+      "whip": { "id": "whip", "currentEmoji": "⚔️", "size": [24, 24], "hint": "coiled red-black whip icon" },
+      "magic_wand": { "id": "magic_wand", "currentEmoji": "🔮", "size": [24, 24], "hint": "purple crystal wand icon" },
+      "knife": { "id": "knife", "currentEmoji": "🗡️", "size": [24, 24], "hint": "silver throwing knife icon" },
+      "orbit": { "id": "orbit", "currentEmoji": "💫", "size": [24, 24], "hint": "blue orbiting crystal shards icon" },
+      "lightning": { "id": "lightning", "currentEmoji": "⚡", "size": [24, 24], "hint": "golden lightning bolt icon" },
+      "mine": { "id": "mine", "currentEmoji": "💣", "size": [24, 24], "hint": "green spiked explosive orb icon" },
+      "garlic": { "id": "garlic", "currentEmoji": "🧄", "size": [24, 24], "hint": "golden holy aura circle icon" },
+      "frost_nova": { "id": "frost_nova", "currentEmoji": "❄️", "size": [24, 24], "hint": "cyan frost burst ring icon" },
+      "soul_drain": { "id": "soul_drain", "currentEmoji": "👻", "size": [24, 24], "hint": "red vampiric beam drain icon" },
+      "boomerang": { "id": "boomerang", "currentEmoji": "🪃", "size": [24, 24], "hint": "bone curved boomerang icon" }
+    },
+    "passiveIcons": {
+      "max_hp": { "id": "max_hp", "currentEmoji": "❤️", "size": [24, 24], "hint": "red heart with plus symbol" },
+      "recovery": { "id": "recovery", "currentEmoji": "💚", "size": [24, 24], "hint": "green regeneration heart" },
+      "armor": { "id": "armor", "currentEmoji": "🛡️", "size": [24, 24], "hint": "iron shield with cross" },
+      "movespeed": { "id": "movespeed", "currentEmoji": "👢", "size": [24, 24], "hint": "winged boot speed icon" },
+      "might": { "id": "might", "currentEmoji": "💪", "size": [24, 24], "hint": "flexing arm strength icon" },
+      "area": { "id": "area", "currentEmoji": "🔵", "size": [24, 24], "hint": "expanding circle area icon" },
+      "cooldown": { "id": "cooldown", "currentEmoji": "⏱️", "size": [24, 24], "hint": "clock with fast hands icon" },
+      "magnet": { "id": "magnet", "currentEmoji": "🧲", "size": [24, 24], "hint": "red horseshoe magnet icon" },
+      "growth": { "id": "growth", "currentEmoji": "📈", "size": [24, 24], "hint": "green upward arrow growth icon" },
+      "luck": { "id": "luck", "currentEmoji": "🍀", "size": [24, 24], "hint": "four-leaf clover luck icon" },
+      "dodge": { "id": "dodge", "currentEmoji": "💨", "size": [24, 24], "hint": "wind dash evasion icon" },
+      "magnet_plus": { "id": "magnet_plus", "currentEmoji": "🧲", "size": [24, 24], "hint": "golden enhanced magnet icon" },
+      "damage_reduction": { "id": "damage_reduction", "currentEmoji": "🛡️", "size": [24, 24], "hint": "heavy fortified shield icon" }
+    },
+    "outputDir": "assets/ui/icons"
+  },
+  "summary": {
+    "totalAssets": 84,
+    "breakdown": {
+      "playerFrames": 6,
+      "enemyFrames": 22,
+      "bossFrames": 15,
+      "backgroundTiles": 9,
+      "backgroundDecorations": 9,
+      "weaponIcons": 10,
+      "passiveIcons": 13
+    },
+    "estimatedGenerationTime": "84 assets × ~25s average = ~35 minutes",
+    "estimatedCost": "84 API calls to gemini-3.1-flash-image"
+  }
+}

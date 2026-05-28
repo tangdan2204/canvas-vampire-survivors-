@@ -1,0 +1,245 @@
+{
+  "title": "Nightfall Survivors",
+  "subtitle": "A Dark Fantasy Pixel Roguelite",
+  "worldSetting": {
+    "era": "Dark medieval fantasy, post-apocalyptic twilight realm",
+    "premise": "The Veil between the living world and the Abyss has shattered. Endless waves of the undead and eldritch horrors pour forth from three corrupted regions. A lone surviving hero must endure until dawn — or fall forever.",
+    "tone": "Gothic horror meets retro arcade action. Dark palette with vibrant magical effects. Death is everywhere but the hero fights with desperate determination.",
+    "visualStyle": "16-bit pixel art, limited color palette per entity, clean pixel edges, top-down perspective with slight 3/4 view for characters"
+  },
+  "regions": {
+    "forest": {
+      "name": "Whisperwood",
+      "lore": "An ancient forest where the trees whisper the names of the dead. The canopy blocks all moonlight, leaving only the eerie glow of spectral creatures. Moss-covered stones and gnarled roots create a labyrinthine floor.",
+      "palette": ["#1a1a2e", "#16213e", "#0f3460", "#2d4a3e", "#1a3a2a"],
+      "groundStyle": "Dark soil with dead leaves, scattered bones, twisted roots",
+      "decorations": "Dead trees, grave stones, glowing mushrooms"
+    },
+    "crypt": {
+      "name": "Sunken Crypt",
+      "lore": "Beneath the shattered cathedral lies a vast necropolis. Torches flicker with green flame along endless corridors. The walls are lined with the restless dead, and cultists perform dark rituals in shadowed alcoves.",
+      "palette": ["#0c0816", "#1a0a2e", "#2d1b4e", "#0d1117", "#1c1024"],
+      "groundStyle": "Cracked stone tiles, ritual circles, pooled dark water",
+      "decorations": "Broken pillars, skull piles, green-flame braziers"
+    },
+    "tundra": {
+      "name": "Frozen Tundra",
+      "lore": "The Ice Queen's domain — an endless frozen wasteland where blizzards never cease. The cold itself is a weapon, sapping life from all who dare cross. Frozen warriors stand as monuments to her cruelty.",
+      "palette": ["#2a3a4f", "#1e2d40", "#3a4f6a", "#4a6080", "#2a4060"],
+      "groundStyle": "Cracked ice over dark water, snow-covered flagstones, frost crystals",
+      "decorations": "Frozen corpses, ice spires, dead frozen trees"
+    }
+  },
+  "factions": {
+    "undead": {
+      "name": "The Restless Dead",
+      "lore": "Souls torn from the Abyss, driven by mindless hunger. They range from feral spirits to ancient warriors.",
+      "members": ["bat", "zombie", "skeleton", "ghost"],
+      "visualTheme": "Ethereal glows, exposed bone, tattered cloth, spectral trails"
+    },
+    "beasts": {
+      "name": "Corrupted Beasts",
+      "lore": "Once-natural creatures twisted by Abyssal energy into monstrous predators.",
+      "members": ["wolf"],
+      "visualTheme": "Dark fur, glowing red/amber eyes, elongated fangs, shadowy aura"
+    },
+    "arcane": {
+      "name": "The Dark Covenant",
+      "lore": "Cultists and sorcerers who embraced the Abyss willingly, seeking forbidden power.",
+      "members": ["mage", "illusionist"],
+      "visualTheme": "Hooded robes, arcane symbols, purple/magenta energy, floating runes"
+    },
+    "elemental": {
+      "name": "Abyssal Constructs",
+      "lore": "Raw Abyssal energy given form — mindless but devastatingly powerful.",
+      "members": ["golem", "slime", "slimeling", "bomber"],
+      "visualTheme": "Amorphous forms, crystalline cores, unstable energy, glowing cracks"
+    }
+  },
+  "characters": {
+    "player": {
+      "name": "The Last Wanderer",
+      "lore": "A battle-scarred hero who survived the Shattering. Armed with ancient weapons that grow stronger with each fallen foe. Their blue cloak is the last symbol of the fallen knightly order.",
+      "visualDescription": "Medium-build warrior in tattered blue cloak over worn leather armor. Silver-white hair, determined expression. Carries weapons at the ready. Blue magical aura when empowered.",
+      "dominantColors": ["#44aaff", "#cfeaff", "#334466", "#aaccee"]
+    },
+    "enemies": {
+      "bat": {
+        "name": "Veil Bat",
+        "lore": "Spectral bats that slip between dimensions. Fast but fragile.",
+        "visualDescription": "Small purple bat with translucent wings and glowing violet eyes. Spectral trail behind it. Simple 2-frame wing flap animation.",
+        "dominantColors": ["#8844ff", "#aa66ff", "#6622cc"],
+        "size": "tiny"
+      },
+      "zombie": {
+        "name": "Shambling Husk",
+        "lore": "Fresh corpses animated by Abyssal energy. Slow but numerous.",
+        "visualDescription": "Rotting humanoid in torn green-stained clothing. Arms outstretched, lurching gait. Exposed ribcage with green glow.",
+        "dominantColors": ["#44aa44", "#226622", "#88cc88"],
+        "size": "medium"
+      },
+      "skeleton": {
+        "name": "Bone Walker",
+        "lore": "Ancient warriors reduced to animated bone. Faster than zombies.",
+        "visualDescription": "Full skeleton in rusted armor scraps. Glowing eye sockets. Carries a notched blade. Rattling walk cycle.",
+        "dominantColors": ["#dddddd", "#bbbbbb", "#999999"],
+        "size": "medium"
+      },
+      "wolf": {
+        "name": "Dire Wolf",
+        "lore": "Massive wolves corrupted into shadow-beasts. Hunt in bursts of speed.",
+        "visualDescription": "Large dark brown wolf with glowing amber eyes. Muscles ripple with shadow energy. Fangs dripping dark ichor. Crouched dash pose.",
+        "dominantColors": ["#aa6644", "#884422", "#cc8866"],
+        "size": "medium-large"
+      },
+      "golem": {
+        "name": "Abyssal Golem",
+        "lore": "Living stone animated by a trapped soul. Nearly impervious until their core is exposed.",
+        "visualDescription": "Hulking stone humanoid with glowing purple cracks. Massive fists. Shield rune on chest that shatters when broken. Slow, heavy stance.",
+        "dominantColors": ["#888888", "#666666", "#aaaaaa", "#8844ff"],
+        "size": "large"
+      },
+      "ghost": {
+        "name": "Wraith",
+        "lore": "Spirits of betrayed souls. Phase through obstacles. Their touch freezes the blood.",
+        "visualDescription": "Translucent cyan humanoid shape with no legs (hovering). Hollow dark eye sockets. Wispy trailing form. Ethereal shimmer.",
+        "dominantColors": ["#88ccff", "#aaeeff", "#4488cc"],
+        "size": "medium"
+      },
+      "mage": {
+        "name": "Covenant Cultist",
+        "lore": "Dark sorcerers who fire bolts of corrupted energy from a distance.",
+        "visualDescription": "Hooded figure in dark magenta robes. Hands crackling with purple energy. Arcane circle floats before them when casting. Keeps distance.",
+        "dominantColors": ["#cc44cc", "#aa22aa", "#ee66ee"],
+        "size": "medium"
+      },
+      "slime": {
+        "name": "Abyssal Ooze",
+        "lore": "Living corruption that splits into smaller copies when destroyed.",
+        "visualDescription": "Amorphous teal blob with a glowing core. Bubbling surface. Eyes are two darker spots. Jiggles and bounces. Splits into two when hit.",
+        "dominantColors": ["#33cc88", "#22aa66", "#44eebb"],
+        "size": "medium"
+      },
+      "slimeling": {
+        "name": "Ooze Fragment",
+        "lore": "Smaller fragments of a destroyed ooze. Faster but much weaker.",
+        "visualDescription": "Tiny teal blob, lighter than parent. Single dark eye spot. Hops rapidly.",
+        "dominantColors": ["#66ddaa", "#44cc88", "#88eebb"],
+        "size": "tiny"
+      },
+      "bomber": {
+        "name": "Blightbomb",
+        "lore": "Unstable abyssal constructs that rush the hero and detonate.",
+        "visualDescription": "Round orange creature with cracks of fire showing. Fuse-like protrusion on top that sparks. Rolls toward target. Flashes red before exploding.",
+        "dominantColors": ["#ff6644", "#cc4422", "#ffaa44"],
+        "size": "small"
+      },
+      "illusionist": {
+        "name": "Phantasm Weaver",
+        "lore": "Masters of deception who create copies of themselves to confuse prey.",
+        "visualDescription": "Elegant robed figure in light purple. Multiple afterimages trail behind. Crown of floating arcane shards. Gestures to summon clones.",
+        "dominantColors": ["#cc88ff", "#aa66dd", "#eeccff"],
+        "size": "medium"
+      }
+    },
+    "bosses": {
+      "reaper": {
+        "name": "The Reaper",
+        "lore": "Lord of the Restless Dead. Appears at the 5-minute mark with a massive scythe. Summons waves of undead minions.",
+        "visualDescription": "Towering hooded figure in tattered black robes. Enormous scythe with glowing purple blade. Skull face with burning violet eyes. Dark mist trails from cloak hem. Summons ghostly hands from the ground.",
+        "dominantColors": ["#220033", "#440066", "#8844ff", "#110022"],
+        "size": "boss-large"
+      },
+      "void_lord": {
+        "name": "The Void Lord",
+        "lore": "A being of pure Abyssal energy. The 10-minute final boss of the forest. Charges with devastating force.",
+        "visualDescription": "Massive dark purple entity with no distinct form — a roiling mass of void energy with multiple glowing eyes. Tendrils of darkness lash outward. Central eye is brightest. Charges forward leaving a trail of corruption.",
+        "dominantColors": ["#550077", "#330055", "#7700aa", "#220044"],
+        "size": "boss-huge"
+      },
+      "necromancer": {
+        "name": "The Necromancer",
+        "lore": "High priest of the Dark Covenant. Appears at 7:30. Raises the fallen to fight again.",
+        "visualDescription": "Skeletal mage in ornate dark purple robes with gold trim. Floating above ground. Staff topped with a skull that glows green. Raises arms to summon undead. Book of dark magic floats nearby.",
+        "dominantColors": ["#3a1a4a", "#2a0a3a", "#5a2a6a", "#44ff44"],
+        "size": "boss-large"
+      },
+      "chrono_lich": {
+        "name": "The Chrono Lich",
+        "lore": "Ancient undead sorcerer who has mastered time magic. The ultimate 12-minute boss. Warps reality around it.",
+        "visualDescription": "Towering skeletal figure in deep blue robes with clockwork mechanisms embedded in bones. Hourglass staff. Multiple ghostly arms reach from its back. Eyes glow cold blue. Time distortion ripples surround it.",
+        "dominantColors": ["#0b2a4a", "#1a4a7a", "#88ccff", "#0a1a3a"],
+        "size": "boss-huge"
+      },
+      "ice_queen": {
+        "name": "The Ice Queen",
+        "lore": "Sovereign of the Frozen Tundra. Replaces the Void Lord on tundra maps. Her touch crystallizes all life.",
+        "visualDescription": "Regal female figure in crystalline ice armor and flowing frost-blue cape. Crown of ice shards. Pale skin with blue veins of frost. Summons ice spears and blizzard winds. Charges with frost lance.",
+        "dominantColors": ["#88ccff", "#aaeeff", "#4488cc", "#cceeff"],
+        "size": "boss-large"
+      }
+    }
+  },
+  "weapons": {
+    "whip": {
+      "name": "Blood Whip",
+      "lore": "An ancient vampiric whip that drinks the life force of those it strikes.",
+      "visualDescription": "Coiled red-black leather whip with barbed tip. Glows crimson when swung. Arc trail of blood droplets.",
+      "projectileStyle": "Red arc sweep with droplet particles"
+    },
+    "magic_wand": {
+      "name": "Seeker Wand",
+      "lore": "A crystalline wand that fires homing bolts of pure arcane energy.",
+      "visualDescription": "Purple crystal-tipped wand. Fires glowing purple orbs that home on enemies.",
+      "projectileStyle": "Purple glowing orb with magic trail"
+    },
+    "knife": {
+      "name": "Shadow Blade",
+      "lore": "Throwing knives forged from shadow-metal. Pierce through multiple foes.",
+      "visualDescription": "Sleek silver-gray throwing knife with dark edge. Spins in flight.",
+      "projectileStyle": "Silver spinning blade with motion blur"
+    },
+    "orbit": {
+      "name": "Soul Shards",
+      "lore": "Crystallized soul fragments that orbit the hero protectively.",
+      "visualDescription": "Glowing blue-white crystal shards spinning in orbit around the player.",
+      "projectileStyle": "Blue-white crystals orbiting with trail"
+    },
+    "lightning": {
+      "name": "Thunder Strike",
+      "lore": "Calls down divine lightning on random foes. Chains at higher levels.",
+      "visualDescription": "Jagged bolt of golden-white lightning striking from above.",
+      "projectileStyle": "Yellow-white lightning bolt, instant strike"
+    },
+    "mine": {
+      "name": "Blight Mine",
+      "lore": "Toxic explosive that detonates after a fuse delay.",
+      "visualDescription": "Dark green spiked orb placed on ground. Flashes red before exploding.",
+      "projectileStyle": "Green spiked sphere → red flash → explosion ring"
+    },
+    "garlic": {
+      "name": "Holy Aura",
+      "lore": "Consecrated barrier that burns undead who get too close.",
+      "visualDescription": "Golden circular aura around the player. Pulses outward.",
+      "projectileStyle": "Expanding golden ring pulse"
+    },
+    "frost_nova": {
+      "name": "Frost Nova",
+      "lore": "Radial burst of freezing energy that slows all nearby enemies.",
+      "visualDescription": "Expanding ring of ice crystals and frost particles.",
+      "projectileStyle": "Cyan/white expanding crystal ring"
+    },
+    "soul_drain": {
+      "name": "Soul Leech",
+      "lore": "A vampiric beam that drains life from enemies to heal the hero.",
+      "visualDescription": "Dark red beam connecting to enemy. Green particles flow back to hero.",
+      "projectileStyle": "Red-to-green beam with particles"
+    },
+    "boomerang": {
+      "name": "Bone Boomerang",
+      "lore": "A curved bone weapon that returns to the thrower after striking.",
+      "visualDescription": "Curved bone-white weapon with carved runes. Spins as it arcs outward and returns.",
+      "projectileStyle": "White curved shape spinning in arc path"
+    }
+  }
+}

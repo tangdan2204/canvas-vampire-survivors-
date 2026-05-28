@@ -33,3 +33,7 @@ Thumbs.db
 # Temp files
 *.tmp
 *.temp
+
+# Art generation tools state (large/ephemeral)
+tools/queue-state.json
+tools/prompts.json

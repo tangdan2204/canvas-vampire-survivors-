@@ -60,6 +60,7 @@ import { dailyChallenge, saveDailyResult } from './daily.js';
 import { TutorialState } from './tutorial.js';
 import { ReplayPlayer, ReplayRecorder, loadReplay, saveReplay } from './replay.js';
 import { KonamiDetector } from './konami.js';
+import { preloadAll, getSprite, hasSprite, spritesReady, getIcon, getTile } from './sprite-loader.js';
 
 registerWeaponClass(Weapon);
 
@@ -67,6 +68,7 @@ registerWeaponClass(Weapon);
 // Offscreen sprite cache. Pre-rasterising the tiny enemy sprites once and
 // blitting the bitmap each frame is measurably faster than redoing the
 // gradient/fill path every draw call. Cache key = `${id}-${size}`.
+// Falls back to procedural rendering if no generated sprite is available.
 // ---------------------------------------------------------------------------
 const SPRITE_CACHE = new Map();
 
@@ -74,7 +76,14 @@ function spriteKey(id, size) {
     return `${id}@${size}`;
 }
 
-function getEnemySprite(def, size) {
+function getEnemySprite(def, size, frameIndex) {
+    // Try generated sprite first
+    if (spritesReady && hasSprite(def.id)) {
+        const img = getSprite(def.id, frameIndex || 0);
+        if (img) return img;
+    }
+
+    // Fallback: procedural circle sprite
     const key = spriteKey(def.id, size);
     const cached = SPRITE_CACHE.get(key);
     if (cached) return cached;
@@ -1832,6 +1841,9 @@ Player.prototype.gainExp = function (amount) {
 
 // Bootstrap
 export function boot() {
+    // Preload generated sprites (non-blocking: game starts with fallback rendering)
+    preloadAll().catch(() => {});
+
     const g = new Game();
     window.__vsGame = g;
     // Dev-only debug hooks. Gated on hostname so they never fire on the
