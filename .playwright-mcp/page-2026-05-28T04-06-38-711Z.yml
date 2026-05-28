@@ -1,0 +1,26 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 1"
+    - generic: XP
+    - generic: "TIME: 00:13"
+    - generic: "Wave: Opening"
+    - generic: "Best: 00:00 · 0K"
+  - generic:
+    - generic: "KILLS: 2"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 60/100"
+    - list "Passives"
+  - list "Weapons":
+    - generic:
+      - text: ⚔️
+      - generic: "1"
+  - generic:
+    - generic:
+      - generic: 🗡️
+      - generic:
+        - generic: Achievement Unlocked
+        - generic: First Blood
+        - generic: Defeat your first foe.
+  - status: "Achievement unlocked: First Blood. Defeat your first foe."

@@ -232,10 +232,16 @@ export class Player {
             const img = getSprite('player', frameIdx);
             if (img) {
                 const ds = this.size * 3;
+                // Circular clip to hide square background
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, ds / 2, 0, Math.PI * 2);
+                ctx.clip();
                 ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
-                // Garlic aura ring
+                ctx.restore();
+                // Garlic aura ring (outside clip, need new save/restore)
                 const garlic = this.weapons.find((w) => w.id === 'garlic');
                 if (garlic) {
+                    ctx.save();
                     const range = garlic.getRange(this);
                     const t = performance.now() / 400;
                     ctx.strokeStyle = `rgba(160,255,160,${0.25 + Math.sin(t) * 0.08})`;
@@ -243,8 +249,8 @@ export class Player {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, range, 0, Math.PI * 2);
                     ctx.stroke();
+                    ctx.restore();
                 }
-                ctx.restore();
                 return;
             }
         }
@@ -488,15 +494,19 @@ export class Enemy {
             const img = getSprite(this.id, frameIdx);
             if (img) {
                 ctx.save();
+                const ds = this.size * 2;
+                // Circular clip to hide square background
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, ds / 2, 0, Math.PI * 2);
+                ctx.clip();
                 if (this.slowTimer > 0) {
                     ctx.filter = 'hue-rotate(180deg)';
                 }
-                const ds = this.size * 2;
                 ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
-                // HP bar
+                ctx.restore();
+                // HP bar (outside clip)
                 const pct = Math.max(0, this.hp / this.maxHp);
                 const w = this.boss ? 80 : 30;
-                ctx.filter = 'none';
                 ctx.fillStyle = '#222';
                 ctx.fillRect(this.x - w / 2, this.y - this.size - 10, w, 4);
                 ctx.fillStyle = pct > 0.5 ? '#44ff44' : pct > 0.25 ? '#ffaa33' : '#ff4444';
@@ -508,7 +518,6 @@ export class Enemy {
                     ctx.arc(this.x, this.y, this.size + 4, 0, Math.PI * 2);
                     ctx.stroke();
                 }
-                ctx.restore();
                 return;
             }
         }

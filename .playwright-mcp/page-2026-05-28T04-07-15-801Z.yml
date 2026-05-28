@@ -1,0 +1,35 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 3"
+    - generic: XP
+    - generic: "TIME: 00:22"
+    - generic: "Wave: Opening"
+    - generic: "Best: 00:00 · 0K"
+  - generic:
+    - generic: "KILLS: 10"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 40/100"
+    - list "Passives"
+  - list "Weapons":
+    - generic:
+      - text: ⚔️
+      - generic: "1"
+    - generic:
+      - text: 🧄
+      - generic: "1"
+  - status: Level 3! Choose an upgrade.
+  - dialog "Choose an upgrade" [ref=e51]:
+    - generic [ref=e52]:
+      - heading "Choose an upgrade" [level=2] [ref=e53]
+      - menu [ref=e54]:
+        - menuitem "Armor (New!). Damage taken -1" [active] [ref=e64] [cursor=pointer]:
+          - generic [ref=e65]: 🛡️ Armor (New!)
+          - generic [ref=e66]: Damage taken -1
+        - menuitem "Pickup Magnet+ (New!). Pickup range +35%" [ref=e67] [cursor=pointer]:
+          - generic [ref=e68]: 🧲 Pickup Magnet+ (New!)
+          - generic [ref=e69]: Pickup range +35%
+        - 'menuitem "Lightning (New!). Smites a random foe. Lv3+ chains. Evolves: storm burst." [ref=e70] [cursor=pointer]':
+          - generic [ref=e71]: ⚡ Lightning (New!)
+          - generic [ref=e72]: "Smites a random foe. Lv3+ chains. Evolves: storm burst."

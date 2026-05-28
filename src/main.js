@@ -1723,7 +1723,13 @@ export class Game {
             const sprite = getEnemySprite(e.type, e.size);
             if (sprite) {
                 const ds = sprite._displaySize || sprite.width;
+                // Circular clip mask to hide square background
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(e.x, e.y, ds / 2, 0, Math.PI * 2);
+                ctx.clip();
                 ctx.drawImage(sprite, e.x - ds / 2, e.y - ds / 2, ds, ds);
+                ctx.restore();
                 // Cheap HP bar (cached sprite can't reflect current HP).
                 const pct = Math.max(0, e.hp / e.maxHp);
                 if (pct < 1) {

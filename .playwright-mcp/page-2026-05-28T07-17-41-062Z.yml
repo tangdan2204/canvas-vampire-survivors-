@@ -1,0 +1,48 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 1"
+    - generic: XP
+    - generic: "TIME: 00:00"
+  - generic:
+    - generic: "KILLS: 0"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 100/100"
+    - list "Passives"
+  - list "Weapons"
+  - status
+  - dialog "SURVIVOR" [ref=e5]:
+    - generic [ref=e6]:
+      - heading "SURVIVOR" [level=1] [ref=e7]
+      - generic [ref=e8]: Vampire Survivors style roguelite
+      - generic [ref=e9]:
+        - strong [ref=e11]: How to play
+        - generic [ref=e12]: • WASD / arrow keys to move
+        - generic [ref=e13]: • Weapons auto-attack nearby foes
+        - generic [ref=e14]: • Esc / P to pause
+        - generic [ref=e15]: • Survive as long as you can!
+      - generic [ref=e16]:
+        - button "Start Run" [ref=e17] [cursor=pointer]
+        - button "Stage 🌲 Whisperwood" [ref=e18] [cursor=pointer]:
+          - text: Stage
+          - generic [ref=e19]: 🌲 Whisperwood
+        - button "Daily Challenge" [ref=e20] [cursor=pointer]
+        - button "View Streak" [ref=e21] [cursor=pointer]
+        - button "Speedrun" [ref=e22] [cursor=pointer]
+        - button "Leaderboard" [ref=e23] [cursor=pointer]
+        - button "Settings" [ref=e24] [cursor=pointer]
+        - button "View Achievements" [ref=e25] [cursor=pointer]
+        - button "How to Play" [ref=e26] [cursor=pointer]
+        - button "Try Tutorial" [ref=e27] [cursor=pointer]
+        - button "Replay Last Run" [ref=e28] [cursor=pointer]
+      - generic [ref=e30]: "Tip: P/Esc pause · M mute · H help"
+  - dialog [ref=e31]:
+    - generic [ref=e32]:
+      - heading "How to play" [level=2] [ref=e33]
+      - list [ref=e34]:
+        - listitem [ref=e35]: You are auto-attacking. Move with WASD or arrow keys; weapons fire on their own.
+        - listitem [ref=e36]: Pick up green orbs to gain XP. Each level lets you choose one upgrade.
+        - listitem [ref=e37]: Survive long enough and a boss appears every few minutes.
+        - listitem [ref=e38]: Hit P or Esc to pause, M to mute, H to see this list any time.
+      - button "Got it" [ref=e40] [cursor=pointer]

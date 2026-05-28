@@ -1,0 +1,45 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 1"
+    - generic: XP
+    - generic: "TIME: 00:00"
+  - generic:
+    - generic: "KILLS: 0"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 100/100"
+    - list "Passives"
+  - list "Weapons"
+  - status
+  - dialog "SURVIVOR" [ref=e9]:
+    - generic [ref=e10]:
+      - heading "SURVIVOR" [level=1] [ref=e11]
+      - generic [ref=e12]: Vampire Survivors style roguelite
+      - generic [ref=e13]:
+        - strong [ref=e15]: How to play
+        - generic [ref=e16]: • WASD / arrow keys to move
+        - generic [ref=e17]: • Weapons auto-attack nearby foes
+        - generic [ref=e18]: • Esc / P to pause
+        - generic [ref=e19]: • Survive as long as you can!
+      - generic [ref=e20]:
+        - button "Start Run" [ref=e21] [cursor=pointer]
+        - button "Stage 🌲 Whisperwood" [ref=e22] [cursor=pointer]:
+          - text: Stage
+          - generic [ref=e23]: 🌲 Whisperwood
+        - button "Daily Challenge" [ref=e24] [cursor=pointer]
+        - button "View Streak" [ref=e25] [cursor=pointer]
+        - button "Speedrun" [ref=e26] [cursor=pointer]
+        - button "Leaderboard" [ref=e27] [cursor=pointer]
+        - button "Settings" [ref=e28] [cursor=pointer]
+        - button "View Achievements" [ref=e29] [cursor=pointer]
+        - button "How to Play" [ref=e30] [cursor=pointer]
+        - button "Try Tutorial" [ref=e31] [cursor=pointer]
+        - button "Replay Last Run" [ref=e32] [cursor=pointer]
+      - generic [ref=e34]: "Tip: P/Esc pause · M mute · H help"
+  - dialog [ref=e45]:
+    - generic [ref=e46]:
+      - heading "Welcome! Take a quick 5-step tutorial?" [level=2] [ref=e47]
+      - generic [ref=e48]:
+        - button "Try Tutorial" [ref=e49] [cursor=pointer]
+        - button "Skip" [ref=e50] [cursor=pointer]

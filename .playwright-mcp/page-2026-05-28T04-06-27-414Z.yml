@@ -1,0 +1,19 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 1"
+    - generic: XP
+    - generic: "TIME: 00:02"
+    - generic: "Wave: Opening"
+    - generic: "Best: 00:00 · 0K"
+  - generic:
+    - generic: "KILLS: 0"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 100/100"
+    - list "Passives"
+  - list "Weapons":
+    - generic:
+      - text: ⚔️
+      - generic: "1"
+  - status

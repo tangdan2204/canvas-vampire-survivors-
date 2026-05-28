@@ -1,0 +1,40 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 4"
+    - generic: XP
+    - generic: "TIME: 00:40"
+    - generic: "Wave: Wave 2"
+    - generic: "Best: 00:00 · 0K"
+  - generic:
+    - generic: "KILLS: 28"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 0/100"
+    - list "Passives":
+      - generic:
+        - text: 💪
+        - generic: "1"
+  - list "Weapons":
+    - generic:
+      - text: ⚔️
+      - generic: "1"
+    - generic:
+      - text: 🧄
+      - generic: "1"
+    - generic:
+      - text: ⚡
+      - generic: "1"
+  - status: Level 4! Choose an upgrade.
+  - dialog "YOU DIED" [ref=e82]:
+    - generic [ref=e83]:
+      - heading "YOU DIED" [level=1] [ref=e84]
+      - generic [ref=e85]:
+        - generic [ref=e86]: "Survived: 00:40"
+        - generic [ref=e87]: "Kills: 28"
+        - generic [ref=e88]: "Level: 4"
+      - group [ref=e89]:
+        - generic "High Scores" [ref=e90] [cursor=pointer]
+      - generic [ref=e91]:
+        - button "Retry" [ref=e92] [cursor=pointer]
+        - button "Main Menu" [ref=e93] [cursor=pointer]

@@ -1,0 +1,38 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 4"
+    - generic: XP
+    - generic: "TIME: 00:30"
+    - generic: "Wave: Wave 2"
+    - generic: "Best: 00:00 · 0K"
+  - generic:
+    - generic: "KILLS: 19"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 30/100"
+    - list "Passives"
+  - list "Weapons":
+    - generic:
+      - text: ⚔️
+      - generic: "1"
+    - generic:
+      - text: 🧄
+      - generic: "1"
+    - generic:
+      - text: ⚡
+      - generic: "1"
+  - status: Level 4! Choose an upgrade.
+  - dialog "Choose an upgrade" [ref=e51]:
+    - generic [ref=e52]:
+      - heading "Choose an upgrade" [level=2] [ref=e53]
+      - menu [ref=e54]:
+        - menuitem "Swiftness (New!). Move speed +10%" [active] [ref=e73] [cursor=pointer]:
+          - generic [ref=e74]: 👟 Swiftness (New!)
+          - generic [ref=e75]: Move speed +10%
+        - menuitem "Might (New!). Damage +10%" [ref=e76] [cursor=pointer]:
+          - generic [ref=e77]: 💪 Might (New!)
+          - generic [ref=e78]: Damage +10%
+        - menuitem "Garlic (Lv.2). Damaging aura around the hero." [ref=e79] [cursor=pointer]:
+          - generic [ref=e80]: 🧄 Garlic (Lv.2)
+          - generic [ref=e81]: Damaging aura around the hero.
