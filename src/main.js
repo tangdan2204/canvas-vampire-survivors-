@@ -1716,15 +1716,14 @@ export class Game {
      */
     _renderEnemies(ctx) {
         for (const e of this.enemies) {
-            if (e.boss || e.flashTimer > 0 || e.shielded) {
-                e.render(ctx);
-                continue;
-            }
             const sprite = getEnemySprite(e.type, e.size);
-            if (sprite) {
+            if (sprite && !e.boss) {
                 const ds = sprite._displaySize || sprite.width;
+                ctx.save();
+                if (e.flashTimer > 0) ctx.filter = 'brightness(3)';
+                else if (e.shielded) ctx.filter = 'saturate(2) brightness(1.3)';
                 ctx.drawImage(sprite, e.x - ds / 2, e.y - ds / 2, ds, ds);
-                // Cheap HP bar (cached sprite can't reflect current HP).
+                ctx.restore();
                 const pct = Math.max(0, e.hp / e.maxHp);
                 if (pct < 1) {
                     const w = 30;

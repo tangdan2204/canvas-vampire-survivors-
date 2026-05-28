@@ -481,12 +481,13 @@ export class Enemy {
 
     render(ctx) {
         // Use generated 3D sprite if available
-        if (spritesReady && hasSprite(this.id) && this.flashTimer <= 0) {
+        if (spritesReady && hasSprite(this.id)) {
             const img = getSprite(this.id, 0);
             if (img) {
                 ctx.save();
-                if (this.slowTimer > 0) ctx.filter = 'hue-rotate(180deg)';
-                const ds = Math.max(this.size * 5, 48);
+                if (this.flashTimer > 0) ctx.filter = 'brightness(3)';
+                else if (this.slowTimer > 0) ctx.filter = 'hue-rotate(180deg)';
+                const ds = Math.max(this.size * 2.5, 24);
                 ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
                 ctx.restore();
                 // HP bar
