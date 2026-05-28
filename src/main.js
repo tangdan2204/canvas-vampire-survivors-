@@ -77,8 +77,15 @@ function spriteKey(id, size) {
 }
 
 function getEnemySprite(def, size, frameIndex) {
-    // Sprite rendering disabled for in-game enemies (quality insufficient).
-    // Generated sprites are only used for UI icons via sprite-loader.
+    // Use generated 3D sprite if available
+    if (spritesReady && hasSprite(def.id)) {
+        const img = getSprite(def.id, frameIndex || 0);
+        if (img) {
+            // Display large: size * 5 for clear visibility
+            img._displaySize = Math.max(size * 5, 48);
+            return img;
+        }
+    }
 
     // Fallback: procedural circle sprite
     const key = spriteKey(def.id, size);
@@ -1715,7 +1722,8 @@ export class Game {
             }
             const sprite = getEnemySprite(e.type, e.size);
             if (sprite) {
-                ctx.drawImage(sprite, e.x - sprite.width / 2, e.y - sprite.height / 2);
+                const ds = sprite._displaySize || sprite.width;
+                ctx.drawImage(sprite, e.x - ds / 2, e.y - ds / 2, ds, ds);
                 // Cheap HP bar (cached sprite can't reflect current HP).
                 const pct = Math.max(0, e.hp / e.maxHp);
                 if (pct < 1) {

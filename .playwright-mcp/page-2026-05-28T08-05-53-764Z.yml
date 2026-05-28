@@ -1,0 +1,32 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 2"
+    - generic: XP
+    - generic: "TIME: 00:28"
+    - generic: "Wave: Opening"
+    - generic: "Best: 00:23 · 4K"
+  - generic:
+    - generic: "KILLS: 4"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 99697/99999"
+    - list "Passives"
+  - list "Weapons":
+    - generic:
+      - text: ⚔️
+      - generic: "1"
+  - status: Level 2! Choose an upgrade.
+  - dialog "Choose an upgrade" [ref=e43]:
+    - generic [ref=e44]:
+      - heading "Choose an upgrade" [level=2] [ref=e45]
+      - menu [ref=e46]:
+        - menuitem "Pickup Magnet+ (New!). Pickup range +35%" [active] [ref=e47] [cursor=pointer]:
+          - generic [ref=e48]: 🧲 Pickup Magnet+ (New!)
+          - generic [ref=e49]: Pickup range +35%
+        - menuitem "Bulwark (New!). Incoming damage -8%" [ref=e50] [cursor=pointer]:
+          - generic [ref=e51]: 🛡️ Bulwark (New!)
+          - generic [ref=e52]: Incoming damage -8%
+        - 'menuitem "Orbiter (New!). Spinning shards circle the hero. Evolves: two rings spinning." [ref=e53] [cursor=pointer]':
+          - generic [ref=e54]: 💫 Orbiter (New!)
+          - generic [ref=e55]: "Spinning shards circle the hero. Evolves: two rings spinning."

@@ -1,0 +1,22 @@
+- generic "Survivor game" [ref=e2]:
+  - generic "Game canvas" [ref=e3]
+  - generic:
+    - generic: "LEVEL: 2"
+    - generic: XP
+    - generic: "TIME: 00:40"
+    - generic: "Wave: Wave 2"
+    - generic: "Best: 00:33 · 6K"
+  - generic:
+    - generic: "KILLS: 9"
+    - button "Pause" [ref=e4] [cursor=pointer]: ⏸
+  - generic:
+    - generic: "HP: 100/100"
+    - list "Passives":
+      - generic:
+        - text: 🛡️
+        - generic: "1"
+  - list "Weapons":
+    - generic:
+      - text: ⚔️
+      - generic: "1"
+  - status: Level 2! Choose an upgrade.

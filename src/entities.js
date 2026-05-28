@@ -224,8 +224,28 @@ export class Player {
         ctx.save();
         ctx.globalAlpha = strobe;
 
-        // Sprite rendering disabled for player (AI sprites lack transparency).
-        // Player uses original procedural glow+circle rendering below.
+        // Use generated 3D sprite
+        if (spritesReady && hasSprite('player')) {
+            const frameIdx = (this.vx === 0 && this.vy === 0) ? 0 : 1;
+            const img = getSprite('player', frameIdx);
+            if (img) {
+                const ds = this.size * 6;
+                ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
+                // Garlic aura ring
+                const garlic = this.weapons.find((w) => w.id === 'garlic');
+                if (garlic) {
+                    const range = garlic.getRange(this);
+                    const t = performance.now() / 400;
+                    ctx.strokeStyle = `rgba(160,255,160,${0.25 + Math.sin(t) * 0.08})`;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, range, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+                ctx.restore();
+                return;
+            }
+        }
 
         const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2.2);
         grad.addColorStop(0, 'rgba(100,200,255,0.35)');
@@ -460,8 +480,25 @@ export class Enemy {
     }
 
     render(ctx) {
-        // Sprite rendering disabled for enemies (AI sprites have opaque backgrounds
-        // that look bad in-game). Keep procedural colored circles.
+        // Use generated 3D sprite if available
+        if (spritesReady && hasSprite(this.id) && this.flashTimer <= 0) {
+            const img = getSprite(this.id, 0);
+            if (img) {
+                ctx.save();
+                if (this.slowTimer > 0) ctx.filter = 'hue-rotate(180deg)';
+                const ds = Math.max(this.size * 5, 48);
+                ctx.drawImage(img, this.x - ds / 2, this.y - ds / 2, ds, ds);
+                ctx.restore();
+                // HP bar
+                const pct = Math.max(0, this.hp / this.maxHp);
+                const w = this.boss ? 80 : 30;
+                ctx.fillStyle = '#222';
+                ctx.fillRect(this.x - w / 2, this.y - this.size - 10, w, 4);
+                ctx.fillStyle = pct > 0.5 ? '#44ff44' : pct > 0.25 ? '#ffaa33' : '#ff4444';
+                ctx.fillRect(this.x - w / 2, this.y - this.size - 10, w * pct, 4);
+                return;
+            }
+        }
 
         ctx.save();
         // Slowed foes get a cold cast.
